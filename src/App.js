@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Button from './Button';
+import Display from './Display';
 
 function App() {
+  const [counter,setCounter] = useState(42);
+  const incrementCounter = (increment)=> setCounter(counter+increment);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Button onClickHandle={incrementCounter} increment={1}></Button>
+     <Button onClickHandle={incrementCounter} increment={5}></Button>
+     <Button onClickHandle={incrementCounter} increment={10}></Button>
+     <Display message={counter}></Display>
     </div>
   );
 }
